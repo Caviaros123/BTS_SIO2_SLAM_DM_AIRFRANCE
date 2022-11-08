@@ -39,6 +39,16 @@ create table vol (
     foreign key (idpilote) references pilote(idpilote)
 );
 
+create table user (
+    iduser int (3) not null auto_increment,
+    nom varchar(30),
+    prenom varchar(30),
+    email varchar(100),
+    mdp varchar(100),
+    role enum ("admin","user"),
+    primary key (iduser)
+);
+
 insert into aeroport VALUES
     (null, 'CDG','France'),
     (null, 'Orly','France');
@@ -54,3 +64,7 @@ insert into pilote VALUES
 insert into vol VALUES
     (null, 'Marseilles','21/09/2017','13:00',1,1),
     (null, 'Lyon','06/12/2014','12:00',2,2);     
+
+insert into user values
+    (null,"Vallentin","Quentin","a@gmail.com","123","admin"),
+    (null,"Prince","Clara","b@gmail.com","456","user");

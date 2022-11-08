@@ -324,4 +324,17 @@ class Modele
 			return null;
 		}
 	}
+	public function verifConnexion($email, $mdp)
+	{
+		if ($this->unPDO != null) {
+			$requete = "select * from user where email = :email and mdp = :mdp;";
+			$donnees = array(":email" => $email, ":mdp" => $mdp);
+			$select = $this->unPDO->prepare($requete);
+			$select->execute($donnees);
+			$unUser = $select->fetch();
+			return $unUser;
+		} else {
+			return null;
+		}
+	}
 }
