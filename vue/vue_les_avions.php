@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 d-lg-flex align-items-lg-center">
-                        <h4 class="d-flex d-lg-flex align-items-lg-center">Liste des aéroports</h4>
+                        <h4 class="d-flex d-lg-flex align-items-lg-center">Liste des avions</h4>
                     </div>
                     <div class="col-md-6" style="text-align: left;">
                         <form class="d-flex justify-content-center flex-wrap justify-content-lg-end my-2" method="post">
@@ -23,7 +23,11 @@
                             <td> Constructeur</td>
                             <td> Nombres de Places</td>
                             <td> ID aeroport</td>
-                            <th style="width: 150px;">Actions</th>
+                            <?php
+                            if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+                                echo '<th style="width: 150px;">Actions</th>';
+                            }
+                            ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,13 +39,14 @@
                             echo "<td>" . $unAvion['constructeur'] . "</td>";
                             echo "<td>" . $unAvion['nbplaces'] . "</td>";
                             echo "<td>" . $unAvion['idaeroport'] . "</td>";
-                            echo "<td>
-                                <div class='col-md-6 col-lg-12' style='text-align: left;'>
-                                    <a class='btn btn-danger' href='index.php?page=2&action=sup&idavion=" . $unAvion['idavion'] . "' style='width: 54px;height: 34px;margin: 8px;margin-right: 30;margin-left: 0;padding: 0;'><i class='far fa-trash-alt'></i></a>
-                                    <a class='btn btn-warning' href='index.php?page=2&action=edit&idavion=" . $unAvion['idavion'] . "' style='width: 54px;height: 34px;padding: 0;'><i class='far fa-edit' style='margin: 0;'></i></a>
-                                </div>
-                            </td>
-                        ";
+                            if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+                                echo "<td>
+                                        <div class='col-md-6 col-lg-12' style='text-align: left;'>
+                                            <a class='btn btn-danger' href='index.php?page=2&action=sup&idavion=" . $unAvion['idavion'] . "' style='width: 54px;height: 34px;margin: 8px;margin-right: 30;margin-left: 0;padding: 0;'><i class='far fa-trash-alt'></i></a>
+                                            <a class='btn btn-warning' href='index.php?page=2&action=edit&idavion=" . $unAvion['idavion'] . "' style='width: 54px;height: 34px;padding: 0;'><i class='far fa-edit' style='margin: 0;'></i></a>
+                                        </div>
+                                  </td>";
+                            }
                             echo "</tr>";
                         }
                         ?>
