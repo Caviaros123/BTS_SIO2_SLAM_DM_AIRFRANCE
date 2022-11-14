@@ -121,4 +121,11 @@ class Controleur
 	{
 		return $this->unModele->selectWhereVol($idvol);
 	}
+	public function verifConnexion($email, $mdp)
+	{
+		// var_dump($email);
+		// controller les email / mdp
+		$unUser = $this->unModele->verifConnexion($email, $mdp);
+		return $unUser;
+	}
 }

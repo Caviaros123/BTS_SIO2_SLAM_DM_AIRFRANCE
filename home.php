@@ -44,3 +44,7 @@
         <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
     </ol>
 </div>
+
+<div class="text-center m-5 b h1 card">
+    <h1>Bienvenue chez Air France</h1>
+</div>

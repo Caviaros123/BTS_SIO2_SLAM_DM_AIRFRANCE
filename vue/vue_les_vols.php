@@ -24,7 +24,11 @@
                             <td> Heure vol </td>
                             <td> ID aeroport </td>
                             <td> ID pilote </td>
-                            <th style="width: 150px;">Actions</th>
+                            <?php
+                            if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+                                echo '<th style="width: 150px;">Actions</th>';
+                            }
+                            ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,13 +41,15 @@
                             echo "<td>" . $unVol['heurevol'] . "</td>";
                             echo "<td>" . $unVol['idaeroport'] . "</td>";
                             echo "<td>" . $unVol['idpilote'] . "</td>";
-                            echo "<td>
+                            if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+                                echo "<td>
                                 <div class='col-md-6 col-lg-12' style='text-align: left;'>
                                     <a class='btn btn-danger' href='index.php?page=4&action=sup&idvol=" . $unVol['idvol'] . "' style='width: 54px;height: 34px;margin: 8px;margin-right: 30;margin-left: 0;padding: 0;'><i class='far fa-trash-alt'></i></a>
                                     <a class='btn btn-warning' href='index.php?page=4&action=edit&idvol=" . $unVol['idvol'] . "' style='width: 54px;height: 34px;padding: 0;'><i class='far fa-edit' style='margin: 0;'></i></a>
                                 </div>
                             </td>
                         ";
+                            }
                             echo "</tr>";
                         }
                         ?>

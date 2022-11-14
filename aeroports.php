@@ -1,5 +1,7 @@
 
 <?php
+require_once("controleur/controleur.class.php");
+$unControleur = new Controleur();
 
 $lAeroport = null;
 if (isset($_GET['action']) && isset($_GET['idaeroport'])) {
