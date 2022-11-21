@@ -12,10 +12,14 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-auto col-md-6 m-auto"><button class="btn btn-danger d-block w-100" type="submit" name="Annuler" style="height: 50px;">Annuler</button></div>
-						<div class="col-md-6"><button class="btn btn-primary d-block w-100" type="submit" <?= ($lAeroport != null) ? ' name="Modifier" value="Modifier"' : ' name="Valider" value="Valider"' ?> style="height: 50px;">Valider</button></div>
+						<div class="col-md-6"><button class="btn btn-primary d-block w-100" type="submit" <?= $lAeroport != null ? ' name="modifier" value="modifier"' : ' name="Valider" value="Valider"' ?> style="height: 50px;"><?= $lAeroport != null ? 'Modifier' : 'Valider' ?></button></div>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 </section>
+
+<?php
+// var_dump($lAeroport);
+?>
