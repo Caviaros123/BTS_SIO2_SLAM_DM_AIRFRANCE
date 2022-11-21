@@ -8,7 +8,20 @@
 				<div class="mb-3"><input class="form-control form-control-lg" type="text" name="designation" placeholder=" Designation de l'avion"></div>
 				<div class="mb-3"><input class="form-control form-control-lg" type="text" name="constructeur" placeholder=" Constructeur de l'avion "></div>
 				<div class="mb-3"><input class="form-control form-control-lg" type="text" name="nbplaces" placeholder=" Nombres de place dans l'avion "></div>
-				<div class="mb-3"><input class="form-control form-control-lg" type="text" name="idaeroport" placeholder="  Numero de l'id de l'aeroport "></div>
+				<div><?php
+						var_dump($lesAeroports) ?></div>
+				<div class="mb-3">
+
+					<select name="idaeroport" class="form-control custom-select" id="idaeroport">
+						<option hidden value="">Selectionner un Aeroport</option>
+						<?php
+						foreach ($lesAeroports as $avion) {
+							echo '<option value=' . $avion['idaeroport'] . '>' . $avion['nom'] . '</option>';
+						}
+						?>
+					</select>
+					<!-- <input class="form-control form-control-lg" type="text" name="idaeroport" placeholder="  Numero de l'id de l'aeroport "> -->
+				</div>
 
 				<div class="container">
 					<div class="row">

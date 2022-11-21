@@ -1,9 +1,10 @@
 
 <?php
 require_once("controleur/controleur.class.php");
-$unControleur = new Controleur();
 
+$unControleur = new Controleur();
 $lAeroport = null;
+
 if (isset($_GET['action']) && isset($_GET['idaeroport'])) {
 	$action = $_GET['action'];
 	$idaeroport = $_GET['idaeroport'];
@@ -17,13 +18,13 @@ if (isset($_GET['action']) && isset($_GET['idaeroport'])) {
 	}
 }
 
-
 require_once("vue/vue_insert_aeroport.php");
+
 if (isset($_POST['Valider'])) {
 	$unControleur->insertAeroport($_POST);
 }
 
-if (isset($_POST['Modifier'])) {
+if (isset($_POST['modifier'])) {
 	$unControleur->updateAeroport($_POST);
 }
 
