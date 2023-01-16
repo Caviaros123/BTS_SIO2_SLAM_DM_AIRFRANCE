@@ -1,4 +1,3 @@
-
 <section style="padding-left: 280px;padding-right: 280px; padding-top: 80px;">
 	<div class="card" style="margin: 28px;margin-right: 0;margin-left: 0;">
 		<div class="card-body" style="margin: 3px;">
@@ -8,8 +7,7 @@
 				<div class="mb-3"><input class="form-control form-control-lg" type="text" name="designation" placeholder=" Designation de l'avion"></div>
 				<div class="mb-3"><input class="form-control form-control-lg" type="text" name="constructeur" placeholder=" Constructeur de l'avion "></div>
 				<div class="mb-3"><input class="form-control form-control-lg" type="text" name="nbplaces" placeholder=" Nombres de place dans l'avion "></div>
-				<div><?php
-						var_dump($lesAeroports) ?></div>
+
 				<div class="mb-3">
 
 					<select name="idaeroport" class="form-control custom-select" id="idaeroport">
