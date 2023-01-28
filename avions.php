@@ -2,6 +2,7 @@
 <?php
 
 $lAvion = null;
+
 if (isset($_GET['action']) && isset($_GET['idavion'])) {
 	$action = $_GET['action'];
 	$idavion = $_GET['idavion'];
@@ -15,8 +16,9 @@ if (isset($_GET['action']) && isset($_GET['idavion'])) {
 	}
 }
 
-
+$lesAeroports = $unControleur->selectAllAeroports();
 require_once("vue/vue_insert_avion.php");
+
 if (isset($_POST['Valider'])) {
 	$unControleur->insertAvion($_POST);
 }
