@@ -45,6 +45,6 @@
     </ol>
 </div>
 
-<div class="text-center m-5 b h1 card">
-    <h1>Bienvenue chez Air France</h1>
+<div class="text-center m-5 b h1 ">
+    <h1>Bienvenue chez <strong> Air France</strong></h1>
 </div>
