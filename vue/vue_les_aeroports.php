@@ -35,6 +35,7 @@
                             echo "<td>" . $unAeroport['idaeroport'] . "</td>";
                             echo "<td>" . $unAeroport['nom'] . "</td>";
                             echo "<td>" . $unAeroport['pays'] . "</td>";
+                            
                             if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
                                 echo "<td>
                                     <div class='col-md-6 col-lg-12' style='text-align: left;'>

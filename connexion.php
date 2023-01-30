@@ -8,7 +8,7 @@ if (isset($_POST['seConnecter'])) {
     $unUser = $unControleur->verifConnexion($email, $mdp);
 
     if ($unUser == null) {
-        echo "<br> VÃ©rifiez vos identifiants";
+        echo "<br> Vérifiez vos identifiants";
     } else {
         $_SESSION['email'] = $unUser['email'];
         $_SESSION['nom'] = $unUser['nom'];
@@ -16,4 +16,5 @@ if (isset($_POST['seConnecter'])) {
         $_SESSION['role'] = $unUser['role'];
         header("Location: index.php?page=0");
     }
+
 }
