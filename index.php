@@ -17,6 +17,9 @@ $unControleur = new Controleur();
 	<link rel="stylesheet" href="assets/css/Hero-Carousel-images.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
 	<link rel="stylesheet" href="assets/css/vanilla-zoom.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </head>
 
 <body>

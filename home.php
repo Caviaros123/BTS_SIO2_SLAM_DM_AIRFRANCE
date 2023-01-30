@@ -45,6 +45,69 @@
     </ol>
 </div>
 
-<div class="text-center m-5 b h1 ">
-    <h1>Bienvenue chez <strong> Air France</strong></h1>
+<div class="text-center m-5 b h1 card">
+    <h1>Bienvenue chez Air France</h1>
 </div>
+
+<div>
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-form">
+                        <div class="form-header">
+                            <h1>Reservation</h1>
+                        </div>
+                        <form>
+                            <div class="form-group"> <input class="form-control" type="text" placeholder="Country, ZIP, city..."> <span class="form-label">Destination</span> </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Entre le
+                                        </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Et le
+                                        </span> </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"> <select class="form-control" required>
+                                            <option value="" selected hidden>Nombre de places</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select> <span class="select-arrow"></span> <span class="form-label">Rooms</span> </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group"> <select class="form-control" required>
+                                            <option value="" selected hidden>Nombre d'adults</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select> <span class="select-arrow"></span> <span class="form-label">Adults</span> </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group"> <select class="form-control" required>
+                                            <option value="" selected hidden>nombre d'enfants</option>
+                                            <option>0</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                        </select> <span class="select-arrow"></span> <span class="form-label">Enfant</span> </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group"> <input class="form-control" type="email" placeholder="Enter your Email"> <span class="form-label">Email</span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> <input class="form-control" type="tel" placeholder="Enter you Phone"> <span class="form-label">Phone</span> </div>
+                                </div>
+                            </div>
+                            <div class="form-btn"> <button class="submit-btn">Réserver maintenant</button> </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
