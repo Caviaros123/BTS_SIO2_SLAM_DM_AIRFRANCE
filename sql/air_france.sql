@@ -9,9 +9,21 @@ create table reservation (
     prix decimal(8,2),
     idclient int(3) not null,
     idvol int(3) not null,
+    nb_pers int(2),
+    type_pers enum ('adulte','enfants'),
     primary key(idreservation),
     foreign key(idvol) references vol(idvol),
     foreign key(idclient) references client(idclient)
+);
+
+
+create table billet (
+    num_billet char(12),
+    idreservation int(3) not null,   
+    idclient int(3) not null,
+    primary key (num_billet),
+    foreign key(idreservation) references reservation(idreservation),
+    foreign key(idclient) references client(idclient)   
 );
 
 create table avion (
@@ -56,10 +68,15 @@ create table vol (
     idvol int (3) not null auto_increment,
     designation varchar (50),
     datevol date,
-	heurevol time,
+	heurevoldep time,
+    heurevolar time,
+    ville_dep varchar(20),
+    ville_ar varchar(20),
+    retard_estim time,
+    nb_escale int(2),
     idpersonnel int (3) not null,
-    primary key(idvol),
     idavion int(3) not null,
+    primary key(idvol),
     foreign key (idpersonnel) references pilote(idpersonnel),
     foreign key(idavion) references avion(idavion)
 );
