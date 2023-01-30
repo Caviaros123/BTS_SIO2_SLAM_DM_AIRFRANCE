@@ -16,4 +16,5 @@ if (isset($_POST['seConnecter'])) {
         $_SESSION['role'] = $unUser['role'];
         header("Location: index.php?page=0");
     }
+
 }

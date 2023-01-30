@@ -7,9 +7,9 @@ class Modele
 	{
 		$this->unPDO = null;
 		try {
-			$this->unPDO = new PDO("mysql:host=localhost;dbname=air_france", "root", ""); //PHP DATA OBJECT
+			$this->unPDO = new PDO("mysql:host=localhost;dbname=air_france", "root", "root"); //PHP DATA OBJECT
 		} catch (PDOException $exp) {
-			echo "Erreur de connexion à la base de données <br/>";
+			echo "Erreur de connexion à la base de  données <br/>";
 			echo $exp->getMessage();
 		}
 	}
