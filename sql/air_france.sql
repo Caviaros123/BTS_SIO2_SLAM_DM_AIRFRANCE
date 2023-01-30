@@ -88,7 +88,7 @@ insert into pilote VALUES
 
 insert into vol VALUES
     (null, 'Marseilles','21/09/2017','13:00',1,1),
-    (null, 'Lyon','06/12/2014','12:00',2,2);     
+    (null, 'Lyon','06/12/2014','12:00',2,2);
 
 insert into user values
     (null,"Vallentin","Quentin","a@gmail.com","123","admin"),
