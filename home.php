@@ -58,8 +58,8 @@
                         <div class="form-header">
                             <h1>Reservation</h1>
                         </div>
-                        <form>
-                            <div class="form-group"> <input class="form-control" type="text" placeholder="Country, ZIP, city..."> <span class="form-label">Destination</span> </div>
+                        <form action="" method="post">
+                            <div class="form-group"> <input class="form-control" type="text" required placeholder="Country, ZIP, city..."> <span class="form-label">Destination</span> </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Entre le
@@ -72,36 +72,43 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="form-group"> <select class="form-control" required>
+                                    <div class="form-group">
+                                        <select class="form-control" required>
                                             <option value="" selected hidden>Nombre de places</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                        </select> <span class="select-arrow"></span> <span class="form-label">Rooms</span> </div>
+                                            <?php
+
+                                            for ($i = 0; $i < 11; $i++) {
+                                                echo "<option value='$i'>$i</option>";
+                                            }
+
+                                            ?>
+                                        </select>
+                                        <span class="select-arrow"></span>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group"> <select class="form-control" required>
                                             <option value="" selected hidden>Nombre d'adults</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
+                                            <?php
+
+                                            for ($i = 0; $i < 11; $i++) {
+                                                echo "<option value='$i'>$i</option>";
+                                            }
+
+                                            ?>
                                         </select> <span class="select-arrow"></span> <span class="form-label">Adults</span> </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group"> <select class="form-control" required>
-                                            <option value="" selected hidden>nombre d'enfants</option>
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
+                                    <div class="form-group"> <select class="form-control">
+                                            <option value="" selected hidden>Nombre d'enfants</option>
+                                            <?php
+
+                                            for ($i = 0; $i < 11; $i++) {
+                                                echo "<option value='$i'>$i</option>";
+                                            }
+
+                                            ?>
                                         </select> <span class="select-arrow"></span> <span class="form-label">Enfant</span> </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group"> <input class="form-control" type="email" placeholder="Enter your Email"> <span class="form-label">Email</span> </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"> <input class="form-control" type="tel" placeholder="Enter you Phone"> <span class="form-label">Phone</span> </div>
                                 </div>
                             </div>
                             <div class="form-btn"> <button class="submit-btn">Réserver maintenant</button> </div>
