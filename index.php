@@ -24,7 +24,7 @@ $unControleur = new Controleur();
 
 <body>
 	<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-		<div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><a href="/"><img src="assets/img/Air_France_Logo.svg.png" width="230"></a>
+		<div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><a href="index.php?page=0"><img src="assets/img/Air_France_Logo.svg.png" width="230"></a>
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item"><a class="nav-link active" href="index.php?page=0"><img class="pr-2" src="images/home.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Accueil</strong></a></li>
@@ -35,8 +35,7 @@ $unControleur = new Controleur();
 					<?php
 					if (isset($_SESSION['email'])) {
 					?>
-						<li class="nav-item"><a class="nav-link text-danger" href="index.php?page=6"><img class="pr-2" src="images/deconnexion.png" alt="Aeroport" width="20" height="20" sizes="20">Déconnexion</a></li>
-
+						<li class="nav-item"><a class="nav-link text-danger" href="index.php?page=7"><img class="pr-2" src="images/deconnexion.png" alt="Aeroport" width="20" height="20" sizes="20">Déconnexion</a></li>
 					<?php
 					} else {
 					?>
@@ -82,6 +81,9 @@ $unControleur = new Controleur();
 			require_once("connexion.php");
 			break;
 		case 6:
+			require_once("inscription.php");
+			break;
+		case 7:
 			require_once("deconnexion.php");
 			break;
 	}

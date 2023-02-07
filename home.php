@@ -58,15 +58,16 @@
                         <div class="form-header">
                             <h1>Reservation</h1>
                         </div>
-                        <form action="" method="post">
-                            <div class="form-group"> <input class="form-control" type="text" required placeholder="Country, ZIP, city..."> <span class="form-label">Destination</span> </div>
+                        <form action="reservation.php" method="post">
+                            <div class="form-group"> <input class="form-control" type="text" name="depart" value="paris" required placeholder="Depart"> <span class="form-label">Destination</span> </div>
+                            <div class="form-group"> <input class="form-control" type="text" name="arrive" value="londres" required placeholder="Arrive"> <span class="form-label">Destination</span> </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Entre le
+                                    <div class="form-group"> <input class="form-control" name="dateDepart" type="date" required> <span class="form-label">Entre le
                                         </span> </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Et le
+                                    <div class="form-group"> <input class="form-control" name="dateArrive" type="date" required> <span class="form-label">Et le
                                         </span> </div>
                                 </div>
                             </div>
@@ -74,11 +75,11 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <select class="form-control" required>
-                                            <option value="" selected hidden>Nombre de places</option>
+                                            <option value="" hidden>Nombre de places</option>
                                             <?php
 
                                             for ($i = 0; $i < 11; $i++) {
-                                                echo "<option value='$i'>$i</option>";
+                                                echo "<option selected value='$i'>$i</option>";
                                             }
 
                                             ?>
@@ -88,11 +89,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group"> <select class="form-control" required>
-                                            <option value="" selected hidden>Nombre d'adults</option>
+                                            <option value="" hidden>Nombre d'adults</option>
                                             <?php
 
                                             for ($i = 0; $i < 11; $i++) {
-                                                echo "<option value='$i'>$i</option>";
+                                                echo "<option selected value='$i'>$i</option>";
                                             }
 
                                             ?>
@@ -100,18 +101,18 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group"> <select class="form-control">
-                                            <option value="" selected hidden>Nombre d'enfants</option>
+                                            <option value="" hidden>Nombre d'enfants</option>
                                             <?php
 
                                             for ($i = 0; $i < 11; $i++) {
-                                                echo "<option value='$i'>$i</option>";
+                                                echo "<option selected value='$i'>$i</option>";
                                             }
 
                                             ?>
                                         </select> <span class="select-arrow"></span> <span class="form-label">Enfant</span> </div>
                                 </div>
                             </div>
-                            <div class="form-btn"> <button class="submit-btn">Réserver maintenant</button> </div>
+                            <div class="form-btn"> <button type="submit" name="reserver" class="submit-btn">Réserver maintenant</button> </div>
                         </form>
                     </div>
                 </div>
