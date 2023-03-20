@@ -1,6 +1,6 @@
 <?php
 require_once("vue/vue_connexion.php");
-if (isset($_POST['seConnecter'])) {
+if (isset($_POST['seConnecter'])) { 
 
     $email = $_POST['email'];
     $mdp = $_POST['mdp'];
@@ -8,7 +8,8 @@ if (isset($_POST['seConnecter'])) {
     $unUser = $unControleur->verifConnexion($email, $mdp);
 
     if ($unUser == null) {
-        echo "<br> Vérifiez vos identifiants";
+        $erreur = "Vérifiez vos identifiants";
+        exit;
     } else {
         $_SESSION['email'] = $unUser['email'];
         $_SESSION['nom'] = $unUser['nom'];

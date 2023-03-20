@@ -1,11 +1,25 @@
 <?php
-require_once("controleur/controleur.class.php");
-
-$unControleur = new Controleur();
-$lAeroport = null;
+require_once("vue/vue_reservation.php");
 
 if (isset($_POST['reserver'])) {
-    $data =  $unControleur->selectVol($_POST);
+    $searchResults = $unControleur->selectVol($_POST);
 
-    var_dump($data);
+    if (count($searchResults) > 0) {
+        require_once("vue/vue_recherche.php");
+
+        echo "<script>
+            $(document).ready(function() {
+                $('#exampleModal').modal('show');
+            });
+        </script>";
+    }else {
+        $searchResults = [];
+        require_once("vue/vue_recherche.php");
+
+        echo "<script>
+            $(document).ready(function() {
+                $('#exampleModal').modal('show');
+            });
+        </script>";
+    }
 }

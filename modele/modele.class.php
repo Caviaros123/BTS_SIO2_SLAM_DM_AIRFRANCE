@@ -372,14 +372,15 @@ class Modele
 		if ($this->unPDO != null) {
 			try {
 
-				$requete = "select * from vol where villedepart=" . $tab['depart'] . " and villearrive=" . $tab['arrive'] . ";";
-				// $donnees = array(":tab" => $tab);
+				$requete = "select * from vol where villedepart=:depart or villearrive=:arrive or villedepart=:arrive or villearrive=:depart; ";
+				$donnees = array(":depart" => $tab['depart'], ":arrive" => $tab['arrive']);
 				$select = $this->unPDO->prepare($requete);
-				$select->execute();
-				$unSelect = $select->fetch();
+				$select->execute($donnees);
+				$unSelect = $select->fetchAll();
+
 				return $unSelect;
 			} catch (PDOException $e) {
-				echo $e->getMessage();
+				return $e->getMessage();
 			}
 		} else {
 			return null;

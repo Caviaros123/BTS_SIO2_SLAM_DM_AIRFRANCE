@@ -6,6 +6,8 @@ create table reservation (
     idreservation int(3) not null auto_increment,
     date_reservation varchar (50),
     date_anulation timestamp,
+    idclient int (3) not null,
+    idvol int (3) not null,
     prix float,
     primary key(idreservation)
 );
@@ -87,5 +89,4 @@ insert into vol VALUES
 insert into pilote VALUES
     (null, 'Chouaki', 'Requel', 'chouaki@gmail.com', '1234', 20),
     (null, 'Prince', 'Burhan', 'prince@gmail.com', '1234', 10);
-
 

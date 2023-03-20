@@ -18,6 +18,10 @@ $unControleur = new Controleur();
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
 	<link rel="stylesheet" href="assets/css/vanilla-zoom.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- Popoer.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </head>
@@ -28,11 +32,15 @@ $unControleur = new Controleur();
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item"><a class="nav-link active" href="index.php?page=0"><img class="pr-2" src="images/home.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Accueil</strong></a></li>
-					<li class="nav-item"><a class="nav-link" href="index.php?page=1"><img class="pr-2" src="images/aeroport.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Aeroports</strong></a></li>
-					<li class="nav-item"><a class="nav-link" href="index.php?page=2"><img class="pr-2" src="images/avion.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Avions</strong></a></li>
-					<li class="nav-item"><a class="nav-link" href="index.php?page=3"><img class="pr-2" src="images/pilote.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Pilotes</strong></a></li>
-					<li class="nav-item"><a class="nav-link" href="index.php?page=4"><img class="pr-2" src="images/vol.png" alt="Aeroport" width="30" height="30" sizes="30">vols</a></li>
 					<?php
+						if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
+					?>
+						<li class="nav-item"><a class="nav-link" href="index.php?page=1"><img class="pr-2" src="images/aeroport.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Aeroports</strong></a></li>
+						<li class="nav-item"><a class="nav-link" href="index.php?page=2"><img class="pr-2" src="images/avion.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Avions</strong></a></li>
+						<li class="nav-item"><a class="nav-link" href="index.php?page=3"><img class="pr-2" src="images/pilote.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Pilotes</strong></a></li>
+						<li class="nav-item"><a class="nav-link" href="index.php?page=4"><img class="pr-2" src="images/vol.png" alt="Aeroport" width="30" height="30" sizes="30">vols</a></li>
+					<?php
+					}
 					if (isset($_SESSION['email'])) {
 					?>
 						<li class="nav-item"><a class="nav-link text-danger" href="index.php?page=7"><img class="pr-2" src="images/deconnexion.png" alt="Aeroport" width="20" height="20" sizes="20">Déconnexion</a></li>
