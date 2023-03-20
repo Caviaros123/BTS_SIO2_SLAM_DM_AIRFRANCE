@@ -14,6 +14,19 @@ class Modele
 		}
 	}
 
+	public function rechercheVol($tab)
+	{
+		if ($this->unPDO != null) {
+			$requete = "select * from vol where villeDepart = :ville_depart and villeArrive = :ville_arrive;";
+			$donnees = array(
+				":villeDepart" => $tab['ville_depart'],
+				":villeArrive" => $tab['ville_arrive'],
+			);
+			$update = $this->unPDO->prepare($requete);
+			$update->execute($donnees);
+		}
+	}
+
 	/******Les Aeroports******/
 
 	public function selectAllAeroports()
@@ -327,12 +340,48 @@ class Modele
 	public function verifConnexion($email, $mdp)
 	{
 		if ($this->unPDO != null) {
-			$requete = "select * from user where email = :email and mdp = :mdp;";
+			$requete = "select * from client where email = :email and mdp = :mdp;";
 			$donnees = array(":email" => $email, ":mdp" => $mdp);
 			$select = $this->unPDO->prepare($requete);
 			$select->execute($donnees);
 			$unUser = $select->fetch();
 			return $unUser;
+		} else {
+			return null;
+		}
+	}
+	public function setInscription($nom, $prenom, $email, $mdp)
+	{
+		if ($this->unPDO != null) {
+			try {
+				$requete = "insert into client values(null, :nom, :prenom, :email, :mdp, :role);";
+				$donnees = array(":nom" => $nom, ":prenom" => $prenom, ":email" => $email, ":mdp" => $mdp, ":role" => "client");
+				$select = $this->unPDO->prepare($requete);
+				$select->execute($donnees);
+				$unUser = $select->fetch();
+				return $unUser;
+			} catch (PDOException $e) {
+				echo $e->getMessage();
+			}
+		} else {
+			return null;
+		}
+	}
+	public function selectVol($tab)
+	{
+		if ($this->unPDO != null) {
+			try {
+
+				$requete = "select * from vol where villedepart=:depart or villearrive=:arrive or villedepart=:arrive or villearrive=:depart; ";
+				$donnees = array(":depart" => $tab['depart'], ":arrive" => $tab['arrive']);
+				$select = $this->unPDO->prepare($requete);
+				$select->execute($donnees);
+				$unSelect = $select->fetchAll();
+
+				return $unSelect;
+			} catch (PDOException $e) {
+				return $e->getMessage();
+			}
 		} else {
 			return null;
 		}

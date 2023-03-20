@@ -9,6 +9,13 @@ class Controleur
 	{
 		$this->unModele = new Modele();
 	}
+
+	/******Les aeroports******/
+	public function rechercheVol($tab)
+	{
+		$lesRecherches = $this->unModele->rechercheVol($tab);
+		return $lesRecherches;
+	}
 	/******Les aeroports******/
 	public function selectAllAeroports()
 	{
@@ -128,6 +135,21 @@ class Controleur
 		// var_dump($email);
 		// controller les email / mdp
 		$unUser = $this->unModele->verifConnexion($email, $mdp);
+		return $unUser;
+	}
+
+	public function setInscription($nom, $prenom, $email, $mdp)
+	{
+		// var_dump($email);
+		// controller les email / mdp
+		$unUser = $this->unModele->setInscription($nom, $prenom, $email, $mdp);
+		return $unUser;
+	}
+	public function selectVol($tab)
+	{
+		// var_dump($email);
+		// controller les email / mdp
+		$unUser = $this->unModele->selectVol($tab);
 		return $unUser;
 	}
 }
