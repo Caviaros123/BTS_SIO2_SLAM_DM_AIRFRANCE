@@ -45,6 +45,10 @@
     </ol>
 </div>
 
-<div class="text-center m-5 b h1 ">
-    <h1>Bienvenue chez <strong> Air France</strong></h1>
+<div class="text-center mt-5">
+    <h1 class="fw-bold">Bienvenue chez Air France</h1>
 </div>
+
+<?php
+    require_once("reservation.php");
+?>

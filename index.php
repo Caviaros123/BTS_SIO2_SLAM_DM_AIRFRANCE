@@ -10,30 +10,40 @@ $unControleur = new Controleur();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<title>AIR FRANCE | BTS SIO SLAM</title>
-	<meta name="description" content="Fait avec amour par: Prince Thierry LOUBAYI MYSSIE, Burhan, SOW GAOUSSOU" />
+	<meta name="description" content="Fait avec amour par: Prince Thierry LOUBAYI MYSSIE, Valentin CIRCOSTA, SOW GAOUSSOU, BURHAN KARAMAHMUT" />
 	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,700,700i,600,600i&amp;display=swap">
 	<link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
 	<link rel="stylesheet" href="assets/css/Hero-Carousel-images.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
 	<link rel="stylesheet" href="assets/css/vanilla-zoom.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- Popoer.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </head>
 
 <body>
 	<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-		<div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><a href="/"><img src="assets/img/Air_France_Logo.svg.png" width="230"></a>
+		<div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><a href="index.php?page=0"><img src="assets/img/Air_France_Logo.svg.png" width="230"></a>
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item"><a class="nav-link active" href="index.php?page=0"><img class="pr-2" src="images/home.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Accueil</strong></a></li>
-					<li class="nav-item"><a class="nav-link" href="index.php?page=1"><img class="pr-2" src="images/aeroport.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Aeroports</strong></a></li>
-					<li class="nav-item"><a class="nav-link" href="index.php?page=2"><img class="pr-2" src="images/avion.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Avions</strong></a></li>
-					<li class="nav-item"><a class="nav-link" href="index.php?page=3"><img class="pr-2" src="images/pilote.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Pilotes</strong></a></li>
-					<li class="nav-item"><a class="nav-link" href="index.php?page=4"><img class="pr-2" src="images/vol.png" alt="Aeroport" width="30" height="30" sizes="30">vols</a></li>
 					<?php
+						if (isset($_SESSION['email']) && $_SESSION['role'] == 'admin') {
+					?>
+						<li class="nav-item"><a class="nav-link" href="index.php?page=1"><img class="pr-2" src="images/aeroport.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Aeroports</strong></a></li>
+						<li class="nav-item"><a class="nav-link" href="index.php?page=2"><img class="pr-2" src="images/avion.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Avions</strong></a></li>
+						<li class="nav-item"><a class="nav-link" href="index.php?page=3"><img class="pr-2" src="images/pilote.png" alt="Aeroport" width="30" height="30" sizes="30"><strong>Pilotes</strong></a></li>
+						<li class="nav-item"><a class="nav-link" href="index.php?page=4"><img class="pr-2" src="images/vol.png" alt="Aeroport" width="30" height="30" sizes="30">vols</a></li>
+					<?php
+					}
 					if (isset($_SESSION['email'])) {
 					?>
-						<li class="nav-item"><a class="nav-link text-danger" href="index.php?page=6"><img class="pr-2" src="images/deconnexion.png" alt="Aeroport" width="20" height="20" sizes="20">Déconnexion</a></li>
-
+						<li class="nav-item"><a class="nav-link text-danger" href="index.php?page=7"><img class="pr-2" src="images/deconnexion.png" alt="Aeroport" width="20" height="20" sizes="20">Déconnexion</a></li>
 					<?php
 					} else {
 					?>
@@ -79,6 +89,9 @@ $unControleur = new Controleur();
 			require_once("connexion.php");
 			break;
 		case 6:
+			require_once("inscription.php");
+			break;
+		case 7:
 			require_once("deconnexion.php");
 			break;
 	}
