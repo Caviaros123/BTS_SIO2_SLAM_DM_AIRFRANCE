@@ -371,10 +371,42 @@ class Modele
 	{
 		if ($this->unPDO != null) {
 			try {
-
+				// $requete = "SELECT * FROM vol
+				// WHERE villedepart=:depart
+				// AND villearrive=:arrive
+				// AND (dateVol IS NULL OR dateVol BETWEEN :dateDepart AND :dateArrive)
+				// ";
 				$requete = "select * from vol where villedepart=:depart or villearrive=:arrive or villedepart=:arrive or villearrive=:depart; ";
-				$donnees = array(":depart" => $tab['depart'], ":arrive" => $tab['arrive']);
+				$donnees = array(
+					":depart" => $tab['depart'], 
+					":arrive" => $tab['arrive'],
+					":dateDepart" => $tab['dateDepart'] || null,
+					":dateArrive" => $tab['dateArrive'] || null
+				);
 				$select = $this->unPDO->prepare($requete);
+				$select->execute($donnees);
+				$unSelect = $select->fetchAll();
+
+				return $unSelect;
+			} catch (PDOException $e) {
+				return $e->getMessage();
+			}
+		} else {
+			return null;
+		}
+	}
+
+	public function searchVolById($tab)
+	{
+		if ($this->unPDO != null) {
+			try {
+				$req = "SELECT * FROM vol
+				WHERE idvol=:idVol;";
+				// $requete = "select * from vol where villedepart=:depart or villearrive=:arrive or villedepart=:arrive or villearrive=:depart; ";
+				$donnees = array(
+					":idVol" => $tab['idVol'],
+				);
+				$select = $this->unPDO->prepare($req);
 				$select->execute($donnees);
 				$unSelect = $select->fetchAll();
 

@@ -93,6 +93,8 @@ $unControleur = new Controleur();
 			break;
 		case 7:
 			require_once("deconnexion.php");
+		case 8:
+			require_once("commande.php");
 			break;
 	}
 	?>

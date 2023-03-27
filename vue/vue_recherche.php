@@ -13,9 +13,9 @@
 
                 <?php
                    if(count($searchResults) > 0){
+                    echo "<ul class='nav navbar container text-center'>";
                     foreach ($searchResults as $result) {
-                        echo "<ul class='nav navbar container mt-2 text-center alert alert-info rounded'>
-                            <li class='col-lg-12'>
+                            echo "<li class='col-lg-12  alert alert-info rounded  mt-2'>
                                 <div class='row g-0 justify-content-around'>
                                     <div class='col-sm-6 card bg-info m-auto py-2 col-md-6'>
                                         <div class='d-flex'>
@@ -28,12 +28,12 @@
                                         <h1 class='fs-5 m-auto'><span class=' fw-bold text-danger'>".$result['prix']." €</span></h1>
                                     </div>
                                     <div class='col-sm-2 col-md-2 justify-content-end'>
-                                        <a class='btn btn-danger' href='index.php?action=reservation&depart=".$result['villedepart']."&arrive=".$result['villearrive']."' class='btn btn-primary'>Réserver</a>
+                                        <a class='btn btn-danger' href='index.php?page=8&action=reservation&idVol=".$result['idvol']."&depart=".$result['villedepart']."&arrive=".$result['villearrive']."' class='btn btn-primary'>Réserver</a>
                                     </div>
                                 </div>
                             </li>";
-                        echo "</ul>";
                     }
+                    echo "</ul>";
                    }else{
                        echo "<h1 class='text-center text-danger mt-5'>Aucun résultat trouvé</h1>";
                    }

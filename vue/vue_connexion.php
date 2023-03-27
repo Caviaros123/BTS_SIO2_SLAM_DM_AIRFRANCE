@@ -4,11 +4,11 @@
             <h4 class="text-center card-title" style="margin: 28px;font-weight: bold;">Connexion</h4>
             <form method="post" style="margin-bottom: 30px;">
                 <?php
-                    echo "<div class='text-center alert alert-danger'>";
                         if (isset($erreur)) {
-                            echo $erreur;
+                            echo "<div class='text-center alert alert-danger'>";
+                            echo $erreur || "Vérifiez vos identifiants";
+                            echo "</div>";
                         }
-                    echo "</div>";
                 ?>
                 <div class="mb-3"><input class="form-control form-control-lg" type="email" name="email" required placeholder="Email"></div>
                 <div class="mb-3"><input class="form-control form-control-lg" type="password" name="mdp" required placeholder="Mot de passe"></div>

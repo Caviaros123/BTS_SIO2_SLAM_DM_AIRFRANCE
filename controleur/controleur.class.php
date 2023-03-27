@@ -152,4 +152,11 @@ class Controleur
 		$unUser = $this->unModele->selectVol($tab);
 		return $unUser;
 	}
+	public function searchVolById($tab)
+	{
+		// var_dump($email);
+		// controller les email / mdp
+		$unUser = $this->unModele->searchVolById($tab);
+		return $unUser;
+	}
 }
