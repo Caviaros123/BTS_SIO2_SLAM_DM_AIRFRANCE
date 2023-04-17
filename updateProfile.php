@@ -2,14 +2,17 @@
 
 require_once("controleur/controleur.class.php");
 $unControleur = new Controleur();
-// check header server content-type: text/html
+
 if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'Mozilla') !== false) {
-    require_once("vue/vue_connexion.php");
-    if (isset($_POST['seConnecter'])) {
+    require_once("vue/vue_profile.php");
+
+    if (isset($_POST['updateProfile'])) {
         $email = $_POST['email'];
         $mdp = $_POST['mdp'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
 
-        $unUser = $unControleur->verifConnexion($email, $mdp);
+        $unUser = $unControleur->updateProfile($email, $mdp, $firstname, $lastname);
 
         if ($unUser == null) {
             $erreur = "Vérifiez vos identifiants !";
@@ -29,16 +32,22 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'M
         }
     }
 }else{
-    if (isset($_POST['seConnecter'])) {
+    if (isset($_POST['updateProfile'])) {
         if ($_POST['from'] == 'api') {
 
             $email = $_POST['email'];
             $mdp = $_POST['mdp'];
+            $nom = $_POST['nom'];
+            $prenom = $_POST['prenom'];
 
-            $unUser = $unControleur->verifConnexion($email, $mdp);
+            $unUser = $unControleur->updateProfile($nom, $prenom, $email, $mdp);
 
             if ($unUser == null) {
-                header('Content-Type: application/json');
+                header(
+                    'Content-Type: application/json',
+                    'charset: utf-8',
+                    'HTTP/1.1 400 Bad Request',
+                );
 
                 echo json_encode([
                     'status' => 400,
@@ -63,4 +72,3 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'M
         }
     }
 }
-

@@ -340,22 +340,51 @@ class Modele
 	public function verifConnexion($email, $mdp)
 	{
 		if ($this->unPDO != null) {
-			$requete = "select * from client where email = :email and mdp = :mdp;";
-			$donnees = array(":email" => $email, ":mdp" => $mdp);
-			$select = $this->unPDO->prepare($requete);
+			$req= "select * from client where email = :email";
+			$donnees = array(":email" => $email);
+			$select = $this->unPDO->prepare($req);
 			$select->execute($donnees);
 			$unUser = $select->fetch();
-			return $unUser;
+			if(password_verify($mdp, $unUser['mdp'])){
+				return $unUser;
+			}else{
+				return null;
+			}
 		} else {
 			return null;
 		}
 	}
 	public function setInscription($nom, $prenom, $email, $mdp)
 	{
+		$options = [
+			'cost' => 12, // the default cost is 10
+		];
+
 		if ($this->unPDO != null) {
 			try {
 				$requete = "insert into client values(null, :nom, :prenom, :email, :mdp, :role);";
-				$donnees = array(":nom" => $nom, ":prenom" => $prenom, ":email" => $email, ":mdp" => $mdp, ":role" => "client");
+				$donnees = array(":nom" => $nom, ":prenom" => $prenom, ":email" => $email, ":mdp" => password_hash($mdp, PASSWORD_DEFAULT, $options), ":role" => "client");
+				$select = $this->unPDO->prepare($requete);
+				$select->execute($donnees);
+				$unUser = $select->fetch();
+				return $unUser;
+			} catch (PDOException $e) {
+				echo $e->getMessage();
+			}
+		} else {
+			return null;
+		}
+	}
+	public function updateProfile($nom, $prenom, $email, $mdp)
+	{
+		$options = [
+			'cost' => 12, // the default cost is 10
+		];
+
+		if ($this->unPDO != null) {
+			try {
+				$requete = "insert into client values(null, :nom, :prenom, :email, :mdp, :role);";
+				$donnees = array(":nom" => $nom, ":prenom" => $prenom, ":email" => $email, ":mdp" => password_hash($mdp, PASSWORD_DEFAULT, $options), ":role" => "client");
 				$select = $this->unPDO->prepare($requete);
 				$select->execute($donnees);
 				$unUser = $select->fetch();

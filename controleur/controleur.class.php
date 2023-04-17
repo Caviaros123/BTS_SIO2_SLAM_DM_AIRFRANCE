@@ -140,9 +140,12 @@ class Controleur
 
 	public function setInscription($nom, $prenom, $email, $mdp)
 	{
-		// var_dump($email);
-		// controller les email / mdp
 		$unUser = $this->unModele->setInscription($nom, $prenom, $email, $mdp);
+		return $unUser;
+	}
+	public function updateProfile($nom, $prenom, $email, $mdp)
+	{
+		$unUser = $this->unModele->updateProfile($nom, $prenom, $email, $mdp);
 		return $unUser;
 	}
 	public function selectVol($tab)
