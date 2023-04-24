@@ -12,7 +12,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'M
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
 
-        $unUser = $unControleur->updateProfile($email, $mdp, $firstname, $lastname);
+        $unUser = $unControleur->updateProfile($firstname, $lastname, $email, $mdp);
 
         if ($unUser == null) {
             $erreur = "Vérifiez vos identifiants !";
@@ -45,8 +45,6 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'M
             if ($unUser == null) {
                 header(
                     'Content-Type: application/json',
-                    'charset: utf-8',
-                    'HTTP/1.1 400 Bad Request',
                 );
 
                 echo json_encode([

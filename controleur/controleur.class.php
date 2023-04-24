@@ -132,8 +132,6 @@ class Controleur
 	}
 	public function verifConnexion($email, $mdp)
 	{
-		// var_dump($email);
-		// controller les email / mdp
 		$unUser = $this->unModele->verifConnexion($email, $mdp);
 		return $unUser;
 	}
@@ -143,9 +141,9 @@ class Controleur
 		$unUser = $this->unModele->setInscription($nom, $prenom, $email, $mdp);
 		return $unUser;
 	}
-	public function updateProfile($nom, $prenom, $email, $mdp)
+	public function updateProfile($firstname, $lastname, $email, $mdp)
 	{
-		$unUser = $this->unModele->updateProfile($nom, $prenom, $email, $mdp);
+		$unUser = $this->unModele->updateProfile($firstname, $lastname, $email, $mdp);
 		return $unUser;
 	}
 	public function selectVol($tab)

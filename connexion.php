@@ -39,6 +39,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'M
 
             if ($unUser == null) {
                 header('Content-Type: application/json');
+                
 
                 echo json_encode([
                     'status' => 400,

@@ -340,15 +340,17 @@ class Modele
 	public function verifConnexion($email, $mdp)
 	{
 		if ($this->unPDO != null) {
-			$req= "select * from client where email = :email";
+			$req= "select * from client where email = :email;";
 			$donnees = array(":email" => $email);
 			$select = $this->unPDO->prepare($req);
 			$select->execute($donnees);
 			$unUser = $select->fetch();
-			if(password_verify($mdp, $unUser['mdp'])){
+			$hash = $unUser['mdp'];
+
+			if ($unUser && password_verify($mdp, $hash)) {
 				return $unUser;
-			}else{
-				return null;
+			} else {
+				return $unUser = null;
 			}
 		} else {
 			return null;
@@ -383,12 +385,29 @@ class Modele
 
 		if ($this->unPDO != null) {
 			try {
-				$requete = "insert into client values(null, :nom, :prenom, :email, :mdp, :role);";
-				$donnees = array(":nom" => $nom, ":prenom" => $prenom, ":email" => $email, ":mdp" => password_hash($mdp, PASSWORD_DEFAULT, $options), ":role" => "client");
-				$select = $this->unPDO->prepare($requete);
+				$requete1= "select mdp from client where email = :email;";
+				$donnees = array(":email" => $email);
+				$select = $this->unPDO->prepare($requete1);
 				$select->execute($donnees);
-				$unUser = $select->fetch();
-				return $unUser;
+				$unuser = $select->fetch();
+				$hash = $unuser['mdp'];
+
+				if ($unuser && password_verify($mdp, $hash)) {
+					$requete2 = "update client set nom = :nom, prenom = :prenom, email = :email where email = :email ;";
+					$donnees2 = array(":nom" => $nom, ":prenom" => $prenom, ":email" => $email);
+					$select2 = $this->unPDO->prepare($requete2);
+					$select2->execute($donnees2);
+
+					$requete3= "select * from client where email = :email;";
+					$donnees3 = array(":email" => $email);
+					$select3 = $this->unPDO->prepare($requete3);
+					$select3->execute($donnees3);
+					$unuser = $select3->fetch();
+
+					return $unuser;
+				} else {
+					return null;
+				}
 			} catch (PDOException $e) {
 				echo $e->getMessage();
 			}
@@ -400,11 +419,6 @@ class Modele
 	{
 		if ($this->unPDO != null) {
 			try {
-				// $requete = "SELECT * FROM vol
-				// WHERE villedepart=:depart
-				// AND villearrive=:arrive
-				// AND (dateVol IS NULL OR dateVol BETWEEN :dateDepart AND :dateArrive)
-				// ";
 				$requete = "select * from vol where villedepart=:depart or villearrive=:arrive or villedepart=:arrive or villearrive=:depart; ";
 				$donnees = array(
 					":depart" => $tab['depart'], 
