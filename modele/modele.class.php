@@ -7,7 +7,7 @@ class Modele
 	{
 		$this->unPDO = null;
 		try {
-			$this->unPDO = new PDO("mysql:host=localhost;dbname=air_france", "root", "root"); //PHP DATA OBJECT
+			$this->unPDO = new PDO("mysql:host=localhost:8889;dbname=air_france", "root", "root"); //PHP DATA OBJECT
 		} catch (PDOException $exp) {
 			echo "Erreur de connexion à la base de  données <br/>";
 			echo $exp->getMessage();
@@ -32,10 +32,10 @@ class Modele
 	public function selectAllAeroports()
 	{
 		if ($this->unPDO != null) {
-			$requete = "select * from aeroport ;";
+			$requete = "select * from aeroport order by idaeroport desc;";
 			$select = $this->unPDO->prepare($requete);
 			$select->execute();
-			$lesAeroports = $select->fetchAll();
+			$lesAeroports = $select->fetchAll(PDO::ATTR_CASE);
 			return $lesAeroports;
 		} else {
 			return null;
