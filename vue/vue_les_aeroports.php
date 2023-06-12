@@ -22,7 +22,7 @@
                             <th>Nom</th>
                             <th>Pays</th>
                             <?php
-                            if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+                            if (isset($_SESSION["role"]) && $_SESSION["role"] == 'admin') {
                                 echo '<th style="width: 150px;">Actions</th>';
                             }
                             ?>
@@ -30,23 +30,24 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($lesAeroports as $unAeroport => $val) {
-                            // var_dump($val->nom);
-
+                        foreach ($lesAeroports as $unAeroport) {
                             echo "<tr>";
-                            echo "<td>" . $val->idaeroport . "</td>";
-                            echo "<td>" . $val->nom . "</td>";
-                            echo "<td>" . $val->pays . "</td>";
+                            echo "<td>" . $unAeroport["idaeroport"] . "</td>";
+                            echo "<td>" . $unAeroport["nom"] . "</td>";
+                            echo "<td>" . $unAeroport["pays"]. "</td>";
 
-                            if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+                            if (isset($_SESSION["role"]) && $_SESSION["role"] == 'admin') {
                                 echo "<td>
                                     <div class='col-md-6 col-lg-12' style='text-align: left;'>
-                                        <a class='btn btn-danger' href='index.php?page=1&action=sup&idaeroport=" . $val->idaeroport . "' style='width: 54px;height: 34px;margin: 8px;margin-right: 30;margin-left: 0;padding: 0;'><i class='far fa-trash-alt'></i></a>
-                                        <a class='btn btn-warning' href='index.php?page=1&action=edit&idaeroport=" . $val->idaeroport . "' style='width: 54px;height: 34px;padding: 0;'><i class='far fa-edit' style='margin: 0;'></i></a>
+                                        <a class='btn btn-danger' href='index.php?page=1&action=sup&idaeroport=" . $unAeroport["idaeroport"] . "' style='width: 54px;height: 34px;margin: 8px;margin-right: 30;margin-left: 0;padding: 0;'><i class='far fa-trash-alt'></i></a>
+                                        <a class='btn btn-warning' href='index.php?page=1&action=edit&idaeroport=" . $unAeroport["idaeroport"] . "' style='width: 54px;height: 34px;padding: 0;'><i class='far fa-edit' style='margin: 0;'></i></a>
                                     </div>
                                  </td>";
                             }
                             echo "</tr>";
+                        }
+                        if ($lesAeroports == null) {
+                            echo '<tr><td colspan="4" ><h1 class="text-danger">Pas d\'aéroports</h1></td></tr>';
                         }
                         ?>
                     </tbody>

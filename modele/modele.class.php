@@ -35,7 +35,7 @@ class Modele
 			$requete = "select * from aeroport order by idaeroport desc;";
 			$select = $this->unPDO->prepare($requete);
 			$select->execute();
-			$lesAeroports = $select->fetchAll(PDO::ATTR_CASE);
+			$lesAeroports = $select->fetchAll(PDO::FETCH_CLASS);
 			return $lesAeroports;
 		} else {
 			return null;
@@ -56,11 +56,12 @@ class Modele
 	public function selectLikeAeroports($mot)
 	{
 		if ($this->unPDO != null) {
-			$requete = "select * from aeroport where nom like :mot or pays like :mot;";
-			$donnees = array(":mot" => "%" . $mot . "%");
+			$requete = "select * from aeroport where nom like :mot order by idaeroport desc;";
+			$donnees = array(":mot" => "%$mot%");
 			$select = $this->unPDO->prepare($requete);
 			$select->execute($donnees);
-			$lesAeroports = $select->fetchAll();
+			$lesAeroports = $select->fetchAll(PDO::FETCH_CLASS);
+			
 			return $lesAeroports;
 		} else {
 			return null;
@@ -106,10 +107,10 @@ class Modele
 	public function selectAllAvions()
 	{
 		if ($this->unPDO != null) {
-			$requete = "select * from avion ;";
+			$requete = "select * from avion order by idavion desc;";
 			$select = $this->unPDO->prepare($requete);
 			$select->execute();
-			$lesAvions = $select->fetchAll();
+			$lesAvions = $select->fetchAll(PDO::FETCH_CLASS);
 			return $lesAvions;
 		} else {
 			return null;
@@ -136,7 +137,7 @@ class Modele
 			$donnees = array(":mot" => "%" . $mot . "%");
 			$select = $this->unPDO->prepare($requete);
 			$select->execute($donnees);
-			$lesAvions = $select->fetchAll();
+			$lesAvions = $select->fetchAll(PDO::FETCH_CLASS);
 			return $lesAvions;
 		} else {
 			return null;
@@ -188,7 +189,7 @@ class Modele
 			$requete = "select * from pilote ;";
 			$select = $this->unPDO->prepare($requete);
 			$select->execute();
-			$lesPilotes = $select->fetchAll();
+			$lesPilotes = $select->fetchAll(PDO::FETCH_CLASS);
 			return $lesPilotes;
 		} else {
 			return null;
@@ -214,7 +215,7 @@ class Modele
 			$donnees = array(":mot" => "%" . $mot . "%");
 			$select = $this->unPDO->prepare($requete);
 			$select->execute($donnees);
-			$lesPilotes = $select->fetchAll();
+			$lesPilotes = $select->fetchAll(PDO::FETCH_CLASS);
 			return $lesPilotes;
 		} else {
 			return null;
@@ -265,7 +266,7 @@ class Modele
 			$requete = "select * from vol ;";
 			$select = $this->unPDO->prepare($requete);
 			$select->execute();
-			$lesVols = $select->fetchAll();
+			$lesVols = $select->fetchAll(PDO::FETCH_CLASS);
 			return $lesVols;
 		} else {
 			return null;
@@ -293,7 +294,7 @@ class Modele
 			$donnees = array(":mot" => "%" . $mot . "%");
 			$select = $this->unPDO->prepare($requete);
 			$select->execute($donnees);
-			$lesVols = $select->fetchAll();
+			$lesVols = $select->fetchAll(PDO::FETCH_CLASS);
 			return $lesVols;
 		} else {
 			return null;
@@ -428,7 +429,7 @@ class Modele
 				);
 				$select = $this->unPDO->prepare($requete);
 				$select->execute($donnees);
-				$unSelect = $select->fetchAll();
+				$unSelect = $select->fetchAll(PDO::FETCH_CLASS);
 
 				return $unSelect;
 			} catch (PDOException $e) {
@@ -451,7 +452,7 @@ class Modele
 				);
 				$select = $this->unPDO->prepare($req);
 				$select->execute($donnees);
-				$unSelect = $select->fetchAll();
+				$unSelect = $select->fetchAll(PDO::FETCH_CLASS);
 
 				return $unSelect;
 			} catch (PDOException $e) {

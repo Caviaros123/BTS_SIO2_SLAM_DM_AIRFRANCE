@@ -26,7 +26,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'M
 		$unControleur->insertAeroport($_POST);
 	}
 
-	if (isset($_POST['modifier'])) {
+	if (isset($_POST['Modifier'])) {
 		$unControleur->updateAeroport($_POST);
 	}
 
